@@ -3901,7 +3901,7 @@ class CAS_Client
         // the URL is built when needed only
         if ( empty($this->_url) ) {
             // remove the ticket if present in the URL
-            $final_uri = https://;
+            $final_uri = "https://";
 
             $final_uri .= $this->_getClientUrl();
             $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
