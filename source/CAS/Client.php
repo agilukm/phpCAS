@@ -3901,8 +3901,7 @@ class CAS_Client
         // the URL is built when needed only
         if ( empty($this->_url) ) {
             // remove the ticket if present in the URL
-            $final_uri = ($this->_isHttps()) ? 'https' : 'http';
-            $final_uri .= '://';
+            $final_uri = https://;
 
             $final_uri .= $this->_getClientUrl();
             $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
@@ -3971,12 +3970,12 @@ class CAS_Client
                 $server_port = $ports[0];
             }
 
-            if ( ($this->_isHttps() && $server_port!=443)
-                || (!$this->_isHttps() && $server_port!=80)
-            ) {
-                $server_url .= ':';
-                $server_url .= $server_port;
-            }
+            //if ( ($this->_isHttps() && $server_port!=443)
+            //    || (!$this->_isHttps() && $server_port!=80)
+            //) {
+            //    $server_url .= ':';
+            //    $server_url .= $server_port;
+            //}
         }
         return $server_url;
     }
