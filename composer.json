@@ -1,7 +1,7 @@
 {
-    "name": "apereo/phpcas",
+    "name": "agilukm/phpcas",
     "description": "Provides a simple API for authenticating users against a CAS server",
-    "keywords": ["cas", "jasig", "apereo"],
+    "keywords": ["cas", "jasig", "apereo", "agilukm"],
     "homepage": "https://wiki.jasig.org/display/CASC/phpCAS",
     "type": "library",
     "license": "Apache-2.0",
