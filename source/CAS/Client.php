@@ -316,7 +316,7 @@ class CAS_Client
     {
         // the URL is build only when needed
         if ( empty($this->_server['base_url']) ) {
-            $this->_server['base_url'] = 'https://' . $this->_getServerHostname();
+            $this->_server['base_url'] = 'http://' . $this->_getServerHostname();
             if ($this->_getServerPort()!=443) {
                 $this->_server['base_url'] .= ':'
                 .$this->_getServerPort();
@@ -342,6 +342,7 @@ class CAS_Client
         // the URL is build only when needed
         if ( empty($this->_server['login_url']) ) {
             $this->_server['login_url'] = $this->_buildQueryUrl($this->_getServerBaseURL().'login','service='.urlencode($this->getURL()));
+            // dd($this->_server);
         }
         $url = $this->_server['login_url'];
         if ($renew) {
@@ -3901,12 +3902,12 @@ class CAS_Client
         // the URL is built when needed only
         if ( empty($this->_url) ) {
             // remove the ticket if present in the URL
-            $final_uri = "https://";
+            $final_uri = "http://";
 
-            $final_uri .= $this->_getClientUrl();
+            $final_uri .= $this->_getClientUrl().':'.$_SERVER['SERVER_PORT'];
             $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
             $final_uri .= $request_uri[0];
-
+            
             if (isset($request_uri[1]) && $request_uri[1]) {
                 $query_string= $this->_removeParameterFromQueryString('ticket', $request_uri[1]);
 
@@ -3916,7 +3917,6 @@ class CAS_Client
                     $final_uri .= "?$query_string";
                 }
             }
-
             phpCAS::trace("Final URI: $final_uri");
             $this->setURL($final_uri);
         }
